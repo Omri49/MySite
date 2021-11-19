@@ -1,4 +1,4 @@
 Hey, I'm Omri
 
 
-!(/docs/assets/jason_statham.jpeg)
+!(/docs/assets/jason_statham.jpg)
