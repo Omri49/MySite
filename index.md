@@ -1,4 +1,3 @@
-Hey, I'm Omri
 
 
-!(docs/assets/jason_statham.jpg)
+![Picture of Jason Statham](/docs/assets/jason_statham.jpg)
