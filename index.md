@@ -1,5 +1,7 @@
 
 
-![Picture of Jason Statham](/docs/assets/jason_statham.jpg)
+![Picture of Jason Statham](/docs/assets/jason_statham_art.jpg)
 
-I hereby declare, Hagai will never receive Xbox GamePass Ultimate from me.
+Very good friend of Charleston.
+
+![Picture of explosion](/docs/assets/explosion.jfif)
