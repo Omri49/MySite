@@ -21,7 +21,13 @@
     form_result = document.getElementById("frm1");
     asker = form_result.asker.value
     if (asker === "Eran" || asker === "eran") {
-      document.write("Request is not legitimate!")
+      rand_num = Math.floor(Math.random() * 10);
+      if (rand_num <= 7){
+        document.write("Request is legitimate!")
+      }
+      else{
+        document.write("Request is not legitimate!")
+      }
 
     }
     else{
