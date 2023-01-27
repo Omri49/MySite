@@ -22,20 +22,33 @@
   Show Image
 </button>
 
-<form id="year_guess">
-  What year was this taken? <input type="text" name="year"><br>
-  <input type="button" onclick="guess()" value="Submit">
-</form>
+<div id="year_guess" class="slidecontainer">
+  <input type="range" min="1900" max="2022" value="1960" class="slider" id="myRange" oninput="sliderChange(this.value)">
+  <output id="slider_year"></output>
+</div>
+
+<button type="button"
+        onclick="guess()" id="year_button">
+  Submit guess
+</button>
+<p id="message"></p>
+
 
 <script>
+  function sliderChange(val) {
+    document.getElementById('slider_year').innerHTML = val;
+  }
+  document.getElementById('slider_year').value = "1960";
+
   function guess() {
-    form_result = document.getElementById("year_guess");
-    year = form_result.year.value
+    form_result = document.getElementById("slider_year");
+    year = form_result.value
     if (year === "1948") {
-      document.write("GOOD JOB ITS THE RIGHT YEAR!!")
+      document.getElementById('message').innerHTML = "good job";
     }
     else{
-      document.write("Are you serious?")
+      document.getElementById('message').innerHTML = "wtf";
+      //document.write("Are you serious?")
     }
 
   }
