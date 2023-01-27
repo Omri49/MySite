@@ -1,3 +1,5 @@
+#!javascript
+$ node
 <html>
 <body>
 
@@ -15,8 +17,8 @@
 
 <img id="image" src="img/picture.png" alt="yo dot" style="visibility:hidden">
 <button type="button"
-        onclick="show()" id="btnID">
-  Show Image
+        onclick="startGame()" id="btnID">
+  Start Game
 </button>
 
 <div id="year_guess" class="slidecontainer">
@@ -29,9 +31,12 @@
   Submit guess
 </button>
 <p id="message"></p>
-
+<p id="score" style="visibility:hidden"></p>
+<p id="current_year" style="visibility:hidden"></p>
+<p id="num_guesses" style="visibility:hidden"></p>
 
 <script>
+
   function sliderChange(val) {
     document.getElementById('slider_year').innerHTML = val;
   }
@@ -40,25 +45,91 @@
   function guess() {
     form_result = document.getElementById("slider_year");
     year = form_result.value
-    if (year === "1948") {
+    actual_year = document.getElementById('current_year').innerHTML + ""
+
+    if (year === actual_year){
       document.getElementById('message').innerHTML = "good job";
+      score = document.getElementById("score").value
+      score = score + 1000
+      document.getElementById("score").value = score
     }
     else{
-      document.getElementById('message').innerHTML = "wtf";
-      //document.write("Are you serious?")
+      document.getElementById('message').innerHTML = "wrong bro";
     }
 
-  }
-  function show() {
+    guesses = document.getElementById('num_guesses').value;
+    guesses = guesses + 1
 
-    /* Access image by id and change
-    the display property to block*/
-    document.getElementById('image')
-            .style.visibility = "visible";
+    if (guesses === 2) {
+      score = document.getElementById("score").value
+      document.getElementById('message').innerHTML = "thanks for playing bro, score is " + score;
+      document.getElementById('year_button')
+              .style.visibility = "hidden";
+      return
+    }
 
-    document.getElementById('btnID')
-            .style.display = "none";
+    document.getElementById("num_guesses").value = guesses
+    console.log("guesses:", document.getElementById("num_guesses").value)
+    changeImage()
+
+
   }
+
+  function startGame(){
+    document.getElementById("num_guesses").value = 0
+    document.getElementById("score").value = 0
+    changeImage()
+
+  }
+
+  function changeImage(){
+    var randomnumber = Math.floor(Math.random() * (2));
+    current_year = document.getElementById('current_year').innerHTML;
+    if (current_year === "1948") {
+      document.getElementById('current_year').innerHTML = "1960";
+      year = 1960
+    }
+    else if (current_year === "1960") {
+      document.getElementById('current_year').innerHTML = "1948";
+      year = 1948
+    }
+    else {
+      if (randomnumber === 1) {
+        year = 1948
+        document.getElementById('current_year').innerHTML = "1948";
+      } else {
+        document.getElementById('current_year').innerHTML = "1960";
+        year = 1960
+      }
+    }
+    console.log("year selected is ", year)
+    var randomYear = Math.floor(Math.random() * (2022 - 1900 + 1)) + 1900;
+    yearString = year.toString()
+    srcURL = "img/" + yearString + "/1.png"
+    document.getElementById("image").src=srcURL;
+    document.getElementById("image").style.visibility="visible";
+    console.log(document.getElementById("current_year").innerHTML)
+
+  }
+
+  // function show() {
+  //   var year;
+  //   var actual;
+  //   guesses = document.getElementById('num_guesses').value;
+  //   while (guesses < 2) {
+  //     guesses = document.getElementById('num_guesses').value;
+  //     console.log(guesses)
+  //     var randomYear = Math.floor(Math.random() * (2022 - 1900 + 1)) + 1900;
+  //   }
+  //
+  //   /* Access image by id and change
+  //   the display property to block*/
+  //   document.getElementById('image')
+  //           .style.visibility = "visible";
+  //
+  //   document.getElementById('message').innerHTML = "thanks for playing bro, score is 1000";
+  //
+  // }
 
   function myFunction() {
     form_result = document.getElementById("frm1");
