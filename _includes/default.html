@@ -16,7 +16,40 @@
   <input type="button" onclick="myFunction()" value="Submit">
 </form>
 
+<img id="image" src="img/picture.png" alt="yo dot" style="visibility:hidden">
+<button type="button"
+        onclick="show()" id="btnID">
+  Show Image
+</button>
+
+<form id="year_guess">
+  What year was this taken? <input type="text" name="year"><br>
+  <input type="button" onclick="guess()" value="Submit">
+</form>
+
 <script>
+  function guess() {
+    form_result = document.getElementById("year_guess");
+    year = form_result.year.value
+    if (year === "1948") {
+      document.write("GOOD JOB ITS THE RIGHT YEAR!!")
+    }
+    else{
+      document.write("Are you serious?")
+    }
+
+  }
+  function show() {
+
+    /* Access image by id and change
+    the display property to block*/
+    document.getElementById('image')
+            .style.visibility = "visible";
+
+    document.getElementById('btnID')
+            .style.display = "none";
+  }
+
   function myFunction() {
     form_result = document.getElementById("frm1");
     asker = form_result.asker.value
